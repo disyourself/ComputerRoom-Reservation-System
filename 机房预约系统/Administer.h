@@ -2,6 +2,10 @@
 #include "Identity.h"
 #include"Student.h"
 #include"Teacher.h"
+#include"computerRoom.h"
+#include"orderFile.h"
+
+using namespace std;
 
 class Administer :public Identity
 {
@@ -37,6 +41,7 @@ private:
 
     vector<Teacher>vTeacher;    //老师容器
     vector<Student>vStudent;       //学生容器
+    vector<computerRoom>vCopRoom;   //机房容器
 
 };
 

@@ -1,5 +1,8 @@
 #pragma once
 #include "Identity.h"
+#include"computerRoom.h"
+#include"orderFile.h"
+
 class Student :public Identity
 {
 public:
@@ -10,7 +13,7 @@ public:
 	Student(int id, string name, string pwd);
 
 	//菜单界面
-	virtual void openMenu();
+	void openMenu();
 
 	//申请预约
 	void applyOrder();
@@ -24,8 +27,16 @@ public:
 	//取消预约
 	void cancelOrder();
 
+private:
+
+	//学生界面
+	void studentMenu();
+
+public:
 
 	int m_Id;
+
+	vector<computerRoom>vCopRoom;	//机房容器
 
 };
 

@@ -27,6 +27,14 @@
 /*
 2022.3.28	完成Adminiser::showPerson()的实现 
 		todo: 查看机房
+2020.3.30   完成Student::applyOrder()实现
+	遇见一次stackover flow；原因是openMenu中while ture:openMenu
+		todo: 创建预约类
+
+20222.4.1	完成Student::showMyOrder->showAllOrder->CancelOrder
+			BUG:1-不能取消所有的预约
+				2-取消预约后status为0 但是showMyOrder不能中status无法读取
+		todo:Stuent 模块的创建
 */
 
 
@@ -148,9 +156,11 @@ void LoginIn(string fileName, int type) {
 				cout<<"学生登录成功!"<<endl;
 				system("pause");
 				system("cls");
-				person = new Student(id, name, pwd);
-
+				
+				person =new Student(id, name, pwd);
+				
 				//进入学生身份子菜单
+				person->openMenu();
 				
 				
 				return;
@@ -197,7 +207,6 @@ void LoginIn(string fileName, int type) {
 				//进入管理员菜单
 				person->openMenu();
 
-				system("pause");
 				return;
 			}
 		}

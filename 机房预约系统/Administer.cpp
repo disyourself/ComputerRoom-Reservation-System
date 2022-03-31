@@ -86,6 +86,7 @@ void Administer::initVector()
 {
 	vStudent.clear();
 	vTeacher.clear();
+	vCopRoom.clear();
 
 	ifstream ifs;
 
@@ -120,6 +121,21 @@ void Administer::initVector()
 
 	cout << "当前的老师数量为:" << vStudent.size() << endl;
 	ifs.close();
+
+//读取机房
+	ifs.open(COMPUTER_FILE, ios::in);
+	if (!ifs.is_open()) {
+		cout << COMPUTER_FILE << "文件读取失败!" << endl;
+		return;
+	}
+
+	computerRoom c;
+	while (ifs >> c.m_CopId && ifs >> c.maxNum) {
+		vCopRoom.push_back(c);
+	}
+	cout << "机房数量为:" << vCopRoom.size() << endl;
+	ifs.close();
+
 
 }
 
@@ -254,10 +270,31 @@ void Administer::showPerson()
 
 void Administer::showCopRoom()
 {
+	cout << "机房信息如下：" << endl;
+	cout << "机房编号" << "\t机房最大容量" << endl;
+	for (vector<computerRoom>::iterator it = vCopRoom.begin(); it != vCopRoom.end(); it++) {
+		cout <<"  "<<it->m_CopId << "\t\t\t" << it->maxNum << endl;
+	}
+
+	system("pause");
+	system("cls");
 }
 
 void Administer::clearFile()
 {
+	cout << "是否清空所有预约？" << endl;
+	cout << "Y/N" << endl;
+	char clSelect;
+	cin>>clSelect;
+	if (clSelect == 'y' || clSelect =='Y') {
+		ofstream ofs(ORDER_FILE, ios::trunc);
+		ofs.close();
+		cout << "清空成功!" << endl;
+	}
+	else cout << "取消操作" << endl;
+	
+	system("pause");
+	system("cls");
 }
 
 
