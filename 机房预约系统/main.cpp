@@ -35,6 +35,21 @@
 			BUG:1-不能取消所有的预约
 				2-取消预约后status为0 但是showMyOrder不能中status无法读取
 		todo:Stuent 模块的创建
+
+2022.4.1   解决了前面status错误显示的bug 原因是orderFile::updateOrder中写入文件 status写入了date的信息->staus（错误拼写)->status 成功解决问题
+	
+	目前老师，学生，管理员所有接口都已实现
+	完结撒花！！！！
+
+	存在BUG:一些选择错误输入会进入死循环 
+			原因是 switch case只能接受int类 数值，可以将选择的局部变量类型定为char 后将switchace atoi转换成int解决;
+
+		todo:打包realease
+
+----------------------------------------------------
+				End
+		Beijing Time:	2022/4/1 11:56 AM 
+
 */
 
 
@@ -184,6 +199,7 @@ void LoginIn(string fileName, int type) {
 				person = new Teacher(id, name, pwd);
 
 				//进入教师子菜单
+				person->openMenu();
 
 				return;
 			}

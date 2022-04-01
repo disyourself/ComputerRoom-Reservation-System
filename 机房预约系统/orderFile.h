@@ -21,6 +21,8 @@ public:
 	void insertMap(string &data,map<string,string>&m);
 
 
+	//显示所有预约
+	void showAllOrder();
 
 	int m_Size;				//记录预约条数
 	map<int, map<string, string>>mOrderF;	//预约记录的条数

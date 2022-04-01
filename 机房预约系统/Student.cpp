@@ -199,6 +199,8 @@ void Student::showAllOrder()
 		}
 		cout << status << endl;
 	}
+	system("pause");
+	system("cls");
 }
 
 void Student::cancelOrder()
@@ -249,6 +251,7 @@ void Student::cancelOrder()
 	while (true)
 	{
 		cin >> ccSelect;
+
 		if (ccSelect >= 0 && ccSelect <= v.size()) {
 			if (ccSelect == 0)
 				//0 ÍË³öÉ¾³ý²Ù×÷

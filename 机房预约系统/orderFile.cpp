@@ -59,7 +59,7 @@ void orderFile::updateOrder()
 		ofs << "stuId:" << this->mOrderF[i]["stuId"] << " ";
 		ofs << "stuName:" << this->mOrderF[i]["stuName"] << " ";
 		ofs << "roomId:" << this->mOrderF[i]["roomId"] << " ";
-		ofs << "status:" << this->mOrderF[i]["date"] << endl;
+		ofs << "status:" << this->mOrderF[i]["status"] << endl;
 	}
 
 	ofs.close();
@@ -87,4 +87,39 @@ void orderFile::insertMap(string &data,map<string,string>&m)
 		m.insert(make_pair(key, value));
 	}
 
+}
+
+void orderFile::showAllOrder()
+{
+	orderFile oF;
+	if (oF.m_Size == 0) {
+		cout << "预约记录为空" << endl;
+		return;
+	}
+
+	for (int i = 0; i < oF.m_Size; i++) {
+		cout << "预约日期: 周" << oF.mOrderF[i]["date"];
+		cout << " 时间段: " << (oF.mOrderF[i]["date"] == "1" ? "上午" : "下午");
+		cout << " 机房号: " << oF.mOrderF[i]["roomId"];
+
+		cout << " 学号: " << oF.mOrderF[i]["stuId"];
+		cout << " 姓名： " << oF.mOrderF[i]["stuName"];
+
+
+		string status = " 状态: ";
+		//1-盛和中 2 已预约 -1 预约失败 0 取消预约
+		if (oF.mOrderF[i]["status"] == "1") {
+			status += "审核中";
+		}
+		else if (oF.mOrderF[i]["status"] == "2") {
+			status += "通过审核";
+		}
+		else if (oF.mOrderF[i]["status"] == "-1") {
+			status += "审核未通过";
+		}
+		else if (oF.mOrderF[i]["status"] == "0") {
+			status += "取消预约";
+		}
+		cout << status << endl;
+	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Identity.h"
+#include "orderFile.h"
 class Teacher :public Identity
 {
 public:
@@ -16,6 +17,13 @@ public:
 	//取消预约
 	void reviewOrder();
 
+private:
+
+	//老师菜单
+	void teacherMenu();
+
+
+public:
 
 	int em_Id;
 };
